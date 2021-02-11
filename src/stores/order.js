@@ -30,7 +30,12 @@ export const state = proxy({
   carts: [],
   cartAddHandler: function (id) {
     const order = this.foods.find((food) => food.id === id);
-    state.carts.push({ ...order });
+    state.carts.push({ ...order, count: 1 });
     //if()
+  },
+  cartAddItem: function (id) {
+    let indexItem = this.carts.findIndex((itm) => itm.id === id);
+    this.carts[indexItem].count += 1;
+    console.log(this.carts);
   },
 });

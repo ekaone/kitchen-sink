@@ -15,8 +15,8 @@ import {
   CListGroupItem,
 } from "@coreui/react";
 import CIcon from "@coreui/icons-react";
-import { BsFillArchiveFill } from "react-icons/bs";
-import { useProxy } from "valtio";
+import { BsFillArchiveFill, BsFillPlusSquareFill } from "react-icons/bs";
+import { snapshot, useProxy } from "valtio";
 import { state } from "../../../stores/order";
 
 const Menu = ({ id, name, price }) => (
@@ -43,13 +43,14 @@ const Ordered = ({ id, name, price }) => (
   <CListGroupItem key={id} className="justify-content-between">
     {name}
     <CBadge className="float-right" shape="pill" color="primary">
-      {price}
+      {price} <BsFillPlusSquareFill onClick={() => state.cartAddItem(id)} />
     </CBadge>
   </CListGroupItem>
 );
 
-function Cards() {
+function Beverages() {
   const snapshot = useProxy(state);
+  console.log(snapshot.carts);
   return (
     <>
       <CRow>
@@ -82,4 +83,4 @@ function Cards() {
   );
 }
 
-export default Cards;
+export default Beverages;
