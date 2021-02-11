@@ -15,6 +15,7 @@ import {
   CListGroupItem,
 } from "@coreui/react";
 import CIcon from "@coreui/icons-react";
+import { BsFillArchiveFill } from "react-icons/bs";
 import { useProxy } from "valtio";
 import { state } from "../../../stores/order";
 
@@ -28,7 +29,7 @@ const Menu = ({ id, name, price }) => (
         </blockquote>
       </CCardBody>
       <CCardFooter>
-        <CIcon name="cil-speedometer" alt="Add" className="float-right" />
+        <BsFillArchiveFill className="float-right" style={{ color: "red" }} />
       </CCardFooter>
     </CCard>
   </CCol>
