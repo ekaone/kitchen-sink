@@ -33,7 +33,8 @@ export const state = proxy({
     { id: 3, name: "Sayur Terong", price: 3000 },
     { id: 4, name: "Kerupuk", price: 1000 },
   ],
-  cartAddHandler: function () {
-    return null;
+  cartAddHandler: function (id) {
+    const order = this.carts.find((menu) => menu.id === id);
+    state.carts.push({ ...order });
   },
 });
