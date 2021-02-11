@@ -15,11 +15,33 @@ import {
   CListGroupItem,
 } from "@coreui/react";
 import CIcon from "@coreui/icons-react";
+import { useProxy } from "valtio";
+import { state } from "../../../stores/order";
 
-const Cards = () => {
-  const [collapsed, setCollapsed] = React.useState(true);
-  const [showCard, setShowCard] = React.useState(true);
+const Menu = ({ id, name, price }) => (
+  <CCol key={id} xs="12" sm="6" md="3">
+    <CCard color="secondary">
+      <CCardBody>
+        <blockquote className="card-bodyquote">
+          <p>{name}</p>
+          <footer>{price}</footer>
+        </blockquote>
+      </CCardBody>
+    </CCard>
+  </CCol>
+);
 
+const Ordered = ({ id, name, price }) => (
+  <CListGroupItem key={id} className="justify-content-between">
+    {name}
+    <CBadge className="float-right" shape="pill" color="primary">
+      {price}
+    </CBadge>
+  </CListGroupItem>
+);
+
+function Cards() {
+  const snapshot = useProxy(state);
   return (
     <>
       <CRow>
@@ -28,24 +50,9 @@ const Cards = () => {
             <CCardHeader>Order</CCardHeader>
             <CCardBody>
               <CListGroup>
-                <CListGroupItem className="justify-content-between">
-                  Cras justo odio
-                  <CBadge className="float-right" shape="pill" color="primary">
-                    14
-                  </CBadge>
-                </CListGroupItem>
-                <CListGroupItem className="justify-content-between">
-                  Dapibus ac facilisis in
-                  <CBadge className="float-right" shape="pill" color="primary">
-                    2
-                  </CBadge>
-                </CListGroupItem>
-                <CListGroupItem className="justify-content-between">
-                  Morbi leo risus
-                  <CBadge className="float-right" shape="pill" color="primary">
-                    1
-                  </CBadge>
-                </CListGroupItem>
+                {snapshot.foods.map((food) => (
+                  <Ordered id={food.id} name={food.name} price={food.price} />
+                ))}
               </CListGroup>
             </CCardBody>
           </CCard>
@@ -54,26 +61,9 @@ const Cards = () => {
           <CCard>
             <CCardBody>
               <CRow>
-                <CCol xs="12" sm="6" md="3">
-                  <CCard>
-                    <CCardBody>Lorem</CCardBody>
-                  </CCard>
-                </CCol>
-                <CCol xs="12" sm="6" md="3">
-                  <CCard>
-                    <CCardBody>Lorem</CCardBody>
-                  </CCard>
-                </CCol>
-                <CCol xs="12" sm="6" md="3">
-                  <CCard>
-                    <CCardBody>Lorem</CCardBody>
-                  </CCard>
-                </CCol>
-                <CCol xs="12" sm="6" md="3">
-                  <CCard>
-                    <CCardBody>Lorem</CCardBody>
-                  </CCard>
-                </CCol>
+                {snapshot.foods.map((food) => (
+                  <Menu id={food.id} name={food.name} price={food.price} />
+                ))}
               </CRow>
             </CCardBody>
             <CCardFooter>Card footer</CCardFooter>
@@ -82,6 +72,6 @@ const Cards = () => {
       </CRow>
     </>
   );
-};
+}
 
 export default Cards;

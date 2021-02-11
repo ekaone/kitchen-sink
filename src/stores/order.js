@@ -8,9 +8,11 @@ export const state = proxy({
     { id: 3, username: "user@mail.com", password: "123" },
   ],
   foods: [
-    { id: 1, name: "Nasi Putih", price: "5000" },
-    { id: 2, name: "Tempe Goreng", price: "2000" },
-    { id: 3, name: "Sayur Terong", price: "3000" },
+    { id: 1, name: "Nasi Putih", price: 5000 },
+    { id: 2, name: "Tempe Goreng", price: 2000 },
+    { id: 3, name: "Sayur Terong", price: 3000 },
+    { id: 4, name: "Kerupuk", price: 1000 },
+    { id: 5, name: "Jengkol", price: 3500 },
   ],
   beverages: [
     { id: 1, name: "Es Teh Manis", price: "2500" },
