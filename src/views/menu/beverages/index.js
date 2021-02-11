@@ -32,7 +32,7 @@ const Menu = ({ id, name, price }) => (
         <BsFillArchiveFill
           onClick={() => state.cartAddHandler(id)}
           className="float-right"
-          style={{ color: "red" }}
+          style={{ color: "red", cursor: "pointer" }}
         />
       </CCardFooter>
     </CCard>

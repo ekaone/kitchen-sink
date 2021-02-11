@@ -27,14 +27,10 @@ export const state = proxy({
     { id: 2, name: "Air Mineral", price: "2000" },
     { id: 3, name: "Es Campur", price: "7500" },
   ],
-  carts: [
-    { id: 1, name: "Nasi Putih", price: 5000 },
-    { id: 2, name: "Tempe Goreng", price: 2000 },
-    { id: 3, name: "Sayur Terong", price: 3000 },
-    { id: 4, name: "Kerupuk", price: 1000 },
-  ],
+  carts: [],
   cartAddHandler: function (id) {
-    const order = this.carts.find((menu) => menu.id === id);
+    const order = this.foods.find((food) => food.id === id);
     state.carts.push({ ...order });
+    //if()
   },
 });
