@@ -27,6 +27,9 @@ const Menu = ({ id, name, price }) => (
           <footer>{price}</footer>
         </blockquote>
       </CCardBody>
+      <CCardFooter>
+        <CIcon name="cil-speedometer" alt="Add" className="float-right" />
+      </CCardFooter>
     </CCard>
   </CCol>
 );
@@ -50,8 +53,8 @@ function Cards() {
             <CCardHeader>Order</CCardHeader>
             <CCardBody>
               <CListGroup>
-                {snapshot.foods.map((food) => (
-                  <Ordered id={food.id} name={food.name} price={food.price} />
+                {snapshot.carts.map((cart) => (
+                  <Ordered id={cart.id} name={cart.name} price={cart.price} />
                 ))}
               </CListGroup>
             </CCardBody>
