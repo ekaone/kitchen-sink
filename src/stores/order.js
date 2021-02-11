@@ -17,4 +17,8 @@ export const state = proxy({
     { id: 2, name: "Air Mineral", price: "2000" },
     { id: 3, name: "Es Campur", price: "7500" },
   ],
+  cart: [],
+  cartHandler: function () {
+    return null;
+  },
 });
