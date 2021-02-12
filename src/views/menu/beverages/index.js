@@ -19,6 +19,7 @@ import {
   BsFillArchiveFill,
   BsPlusSquareFill,
   BsDashSquareFill,
+  BsFillTrashFill,
 } from "react-icons/bs";
 import { snapshot, useProxy } from "valtio";
 import { state } from "../../../stores/order";
@@ -57,13 +58,19 @@ const Ordered = ({ id, name, price, count }) => (
 
 function Beverages() {
   const snapshot = useProxy(state);
-  console.log(snapshot.foods);
+  // console.table(snapshot.foods);
   return (
     <>
       <CRow>
         <CCol xs="12" sm="6" md="4">
           <CCard>
-            <CCardHeader>Order</CCardHeader>
+            <CCardHeader>
+              Order {snapshot.cartsLength()}
+              <BsFillTrashFill
+                onClick={() => snapshot.cartsEmpty()}
+                style={{ cursor: "pointer" }}
+              />
+            </CCardHeader>
             <CCardBody>
               <CListGroup>
                 {snapshot.carts.map((cart) => {
