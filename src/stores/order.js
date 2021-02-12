@@ -13,14 +13,14 @@ export const state = proxy({
     { id: 3, name: "Sayur Terong", price: 3000 },
     { id: 4, name: "Kerupuk", price: 1000 },
     { id: 5, name: "Jengkol", price: 3500 },
-    { id: 6, name: "Jengkol", price: 3500 },
-    { id: 7, name: "Jengkol", price: 3500 },
-    { id: 8, name: "Jengkol", price: 3500 },
-    { id: 9, name: "Jengkol", price: 3500 },
-    { id: 10, name: "Jengkol", price: 3500 },
-    { id: 11, name: "Jengkol", price: 3500 },
-    { id: 12, name: "Jengkol", price: 3500 },
-    { id: 13, name: "Jengkol", price: 3500 },
+    { id: 6, name: "Mentimun", price: 2500 },
+    { id: 7, name: "Tahu", price: 4500 },
+    { id: 8, name: "Bakso", price: 1500 },
+    { id: 9, name: "Ikan Tuna", price: 4000 },
+    { id: 10, name: "Kepiting", price: 1000 },
+    { id: 11, name: "Cumi Goreng", price: 6500 },
+    { id: 12, name: "Ikan Teri", price: 1750 },
+    { id: 13, name: "Nasi Kuning", price: 2500 },
   ],
   beverages: [
     { id: 1, name: "Es Teh Manis", price: "2500" },
@@ -33,9 +33,14 @@ export const state = proxy({
     state.carts.push({ ...order, count: 1 });
     //if()
   },
-  cartAddItem: function (id) {
+  cartIncrementItem: function (id) {
     let indexItem = this.carts.findIndex((itm) => itm.id === id);
     this.carts[indexItem].count += 1;
+    console.log(this.carts);
+  },
+  cartDecrementItem: function (id) {
+    let indexItem = this.carts.findIndex((itm) => itm.id === id);
+    this.carts[indexItem].count -= 1;
     console.log(this.carts);
   },
 });

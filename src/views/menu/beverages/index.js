@@ -15,7 +15,11 @@ import {
   CListGroupItem,
 } from "@coreui/react";
 import CIcon from "@coreui/icons-react";
-import { BsFillArchiveFill, BsFillPlusSquareFill } from "react-icons/bs";
+import {
+  BsFillArchiveFill,
+  BsPlusSquareFill,
+  BsDashSquareFill,
+} from "react-icons/bs";
 import { snapshot, useProxy } from "valtio";
 import { state } from "../../../stores/order";
 
@@ -39,18 +43,18 @@ const Menu = ({ id, name, price }) => (
   </CCol>
 );
 
-const Ordered = ({ id, name, price }) => (
+const Ordered = ({ id, name, price, count }) => (
   <CListGroupItem key={id} className="justify-content-between">
     {name}
-    <CBadge className="float-right" shape="pill" color="primary">
-      {price} <BsFillPlusSquareFill onClick={() => state.cartAddItem(id)} />
-    </CBadge>
+    <span className="float-right">
+      <BsDashSquareFill onClick={() => state.cartDecrementItem(id)} /> {count}{" "}
+      {price} <BsPlusSquareFill onClick={() => state.cartIncrementItem(id)} />
+    </span>
   </CListGroupItem>
 );
 
 function Beverages() {
   const snapshot = useProxy(state);
-  console.log(snapshot.carts);
   return (
     <>
       <CRow>
@@ -59,9 +63,18 @@ function Beverages() {
             <CCardHeader>Order</CCardHeader>
             <CCardBody>
               <CListGroup>
-                {snapshot.carts.map((cart) => (
-                  <Ordered id={cart.id} name={cart.name} price={cart.price} />
-                ))}
+                {snapshot.carts.map((cart) => {
+                  return cart.count <= 0 ? (
+                    ""
+                  ) : (
+                    <Ordered
+                      id={cart.id}
+                      name={cart.name}
+                      price={cart.price}
+                      count={cart.count}
+                    />
+                  );
+                })}
               </CListGroup>
             </CCardBody>
           </CCard>
