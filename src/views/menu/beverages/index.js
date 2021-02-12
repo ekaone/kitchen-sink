@@ -24,41 +24,46 @@ import {
 import { snapshot, useProxy } from "valtio";
 import { state } from "../../../stores/order";
 
-const Menu = ({ id, name, price }) => (
-  <CCol key={id} xs="12" sm="6" md="3">
-    <CCard color="secondary">
-      <CCardBody>
-        <blockquote className="card-bodyquote">
-          <p>
-            {name} {id}
-          </p>
-          <footer>{price}</footer>
-        </blockquote>
-      </CCardBody>
-      <CCardFooter>
-        <BsFillArchiveFill
-          onClick={() => state.cartAddHandler(id)}
-          className="float-right"
-          style={{ color: "red", cursor: "pointer" }}
-        />
-      </CCardFooter>
-    </CCard>
-  </CCol>
-);
-
-const Ordered = ({ id, name, price, count }) => (
-  <CListGroupItem key={id} className="justify-content-between">
-    {name}
-    <span className="float-right">
-      <BsDashSquareFill onClick={() => state.cartDecrementItem(id)} /> {count}{" "}
-      {price} <BsPlusSquareFill onClick={() => state.cartIncrementItem(id)} />
-    </span>
-  </CListGroupItem>
-);
-
 function Beverages() {
   const snapshot = useProxy(state);
-  // console.table(snapshot.foods);
+  console.log(snapshot.foods);
+
+  const Menu = ({ id, name, price, isSelected }) => (
+    <CCol key={id} xs="12" sm="6" md="3">
+      <CCard color="secondary">
+        <CCardBody>
+          <blockquote className="card-bodyquote">
+            <p>
+              {name} {id}
+            </p>
+            <footer>{price}</footer>
+          </blockquote>
+        </CCardBody>
+        <CCardFooter>
+          {!isSelected ? (
+            <BsFillArchiveFill
+              onClick={() => state.cartAddHandler(id)}
+              className="float-right"
+              style={{ color: "red", cursor: "pointer" }}
+            />
+          ) : (
+            ""
+          )}
+        </CCardFooter>
+      </CCard>
+    </CCol>
+  );
+
+  const Ordered = ({ id, name, price, count }) => (
+    <CListGroupItem key={id} className="justify-content-between">
+      {name}
+      <span className="float-right">
+        <BsDashSquareFill onClick={() => state.cartDecrementItem(id)} /> {count}{" "}
+        {price} <BsPlusSquareFill onClick={() => state.cartIncrementItem(id)} />
+      </span>
+    </CListGroupItem>
+  );
+
   return (
     <>
       <CRow>
@@ -73,7 +78,7 @@ function Beverages() {
             </CCardHeader>
             <CCardBody>
               <CListGroup>
-                {snapshot.carts.map((cart) => {
+                {snapshot.carts?.map((cart) => {
                   return cart.count <= 0 ? (
                     ""
                   ) : (
@@ -94,7 +99,12 @@ function Beverages() {
             <CCardBody>
               <CRow>
                 {snapshot.foods.map((food) => (
-                  <Menu id={food.id} name={food.name} price={food.price} />
+                  <Menu
+                    id={food.id}
+                    name={food.name}
+                    price={food.price}
+                    isSelected={food.isSelected}
+                  />
                 ))}
               </CRow>
             </CCardBody>

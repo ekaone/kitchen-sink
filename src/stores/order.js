@@ -25,7 +25,7 @@ export const state = proxy({
     this.foods[indexItem].isSelected = true;
   },
   cartsEmpty: function () {
-    state.carts = [];
+    this.carts = [];
   },
   cartsLength: function () {
     return this.carts.length;
@@ -36,9 +36,11 @@ export const state = proxy({
   },
   cartDecrementItem: function (id) {
     const indexItem = this.carts.findIndex((itm) => itm.id === id);
+    const indexItemFoods = this.foods.findIndex((itm) => itm.id === id);
     this.carts[indexItem].count -= 1;
     if (this.carts[indexItem].count === 0) {
       this.carts.splice(indexItem, 1);
+      this.foods[indexItemFoods].isSelected = false;
     }
   },
 });
