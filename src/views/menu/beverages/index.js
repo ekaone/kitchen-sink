@@ -28,7 +28,9 @@ const Menu = ({ id, name, price }) => (
     <CCard color="secondary">
       <CCardBody>
         <blockquote className="card-bodyquote">
-          <p>{name}</p>
+          <p>
+            {name} {id}
+          </p>
           <footer>{price}</footer>
         </blockquote>
       </CCardBody>
@@ -55,6 +57,7 @@ const Ordered = ({ id, name, price, count }) => (
 
 function Beverages() {
   const snapshot = useProxy(state);
+  console.log(snapshot.foods);
   return (
     <>
       <CRow>

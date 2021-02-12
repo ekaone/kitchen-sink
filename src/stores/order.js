@@ -8,19 +8,19 @@ export const state = proxy({
     { id: 3, username: "user@mail.com", password: "123", isLoggedIn: false },
   ],
   foods: [
-    { id: 1, name: "Nasi Putih", price: 5000 },
-    { id: 2, name: "Tempe Goreng", price: 2000 },
-    { id: 3, name: "Sayur Terong", price: 3000 },
-    { id: 4, name: "Kerupuk", price: 1000 },
-    { id: 5, name: "Jengkol", price: 3500 },
-    { id: 6, name: "Mentimun", price: 2500 },
-    { id: 7, name: "Tahu", price: 4500 },
-    { id: 8, name: "Bakso", price: 1500 },
-    { id: 9, name: "Ikan Tuna", price: 4000 },
-    { id: 10, name: "Kepiting", price: 1000 },
-    { id: 11, name: "Cumi Goreng", price: 6500 },
-    { id: 12, name: "Ikan Teri", price: 1750 },
-    { id: 13, name: "Nasi Kuning", price: 2500 },
+    { id: 1, name: "Nasi Putih", price: 5000, isSelected: false },
+    { id: 2, name: "Tempe Goreng", price: 2000, isSelected: false },
+    { id: 3, name: "Sayur Terong", price: 3000, isSelected: false },
+    { id: 4, name: "Kerupuk", price: 1000, isSelected: false },
+    { id: 5, name: "Jengkol", price: 3500, isSelected: false },
+    { id: 6, name: "Mentimun", price: 2500, isSelected: false },
+    { id: 7, name: "Tahu", price: 4500, isSelected: false },
+    { id: 8, name: "Bakso", price: 1500, isSelected: false },
+    { id: 9, name: "Ikan Tuna", price: 4000, isSelected: false },
+    { id: 10, name: "Kepiting", price: 1000, isSelected: false },
+    { id: 11, name: "Cumi Goreng", price: 6500, isSelected: false },
+    { id: 12, name: "Ikan Teri", price: 1750, isSelected: false },
+    { id: 13, name: "Nasi Kuning", price: 2500, isSelected: false },
   ],
   beverages: [
     { id: 1, name: "Es Teh Manis", price: "2500" },
@@ -31,7 +31,7 @@ export const state = proxy({
   cartAddHandler: function (id) {
     const order = this.foods.find((food) => food.id === id);
     state.carts.push({ ...order, count: 1 });
-    //if()
+    state.foods[id - 1] = { ...state.foods[id - 1], isSelected: true };
   },
   cartIncrementItem: function (id) {
     let indexItem = this.carts.findIndex((itm) => itm.id === id);
@@ -42,5 +42,6 @@ export const state = proxy({
     let indexItem = this.carts.findIndex((itm) => itm.id === id);
     this.carts[indexItem].count -= 1;
     console.log(this.carts);
+    state.foods[id - 1] = { ...state.foods[id - 1], isSelected: false };
   },
 });
