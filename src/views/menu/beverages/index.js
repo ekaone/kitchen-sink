@@ -13,6 +13,7 @@ import {
   CLink,
   CListGroup,
   CListGroupItem,
+  CButton,
 } from "@coreui/react";
 import CIcon from "@coreui/icons-react";
 import {
@@ -26,7 +27,7 @@ import { state } from "../../../stores/order";
 
 function Beverages() {
   const snapshot = useProxy(state);
-  console.log(snapshot.foods);
+  console.table(snapshot.foods);
 
   const Menu = ({ id, name, price, isSelected }) => (
     <CCol key={id} xs="12" sm="6" md="3">
@@ -69,13 +70,7 @@ function Beverages() {
       <CRow>
         <CCol xs="12" sm="6" md="4">
           <CCard>
-            <CCardHeader>
-              Order {snapshot.cartsLength()}
-              <BsFillTrashFill
-                onClick={() => snapshot.cartsEmpty()}
-                style={{ cursor: "pointer" }}
-              />
-            </CCardHeader>
+            <CCardHeader>Order</CCardHeader>
             <CCardBody>
               <CListGroup>
                 {snapshot.carts?.map((cart) => {
@@ -108,7 +103,15 @@ function Beverages() {
                 ))}
               </CRow>
             </CCardBody>
-            <CCardFooter>Card footer</CCardFooter>
+            <CCardFooter>
+              <CButton
+                block
+                color="primary"
+                onClick={() => console.log(snapshot.cartTotal())}
+              >
+                Check out
+              </CButton>
+            </CCardFooter>
           </CCard>
         </CCol>
       </CRow>

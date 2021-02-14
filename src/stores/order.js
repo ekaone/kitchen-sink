@@ -13,19 +13,16 @@ export const state = proxy({
     { id: 3, name: "Sayur Terong", price: 3000, isSelected: false },
   ],
   beverages: [
-    { id: 1, name: "Es Teh Manis", price: "2500" },
-    { id: 2, name: "Air Mineral", price: "2000" },
-    { id: 3, name: "Es Campur", price: "7500" },
+    { id: 1, name: "Es Teh Manis", price: 2500 },
+    { id: 2, name: "Air Mineral", price: 2000 },
+    { id: 3, name: "Es Campur", price: 7500 },
   ],
   carts: [],
   cartAddHandler: function (id) {
     const order = this.foods.find((food) => food.id === id);
     const indexItem = this.foods.findIndex((itm) => itm.id === id);
-    this.carts.push({ ...order, count: 1 });
+    this.carts.push({ ...order, count: 1, amount: order.price });
     this.foods[indexItem].isSelected = true;
-  },
-  cartsEmpty: function () {
-    this.carts = [];
   },
   cartsLength: function () {
     return this.carts.length;
@@ -33,6 +30,8 @@ export const state = proxy({
   cartIncrementItem: function (id) {
     const indexItem = this.carts.findIndex((itm) => itm.id === id);
     this.carts[indexItem].count += 1;
+    this.carts[indexItem].amount =
+      this.carts[indexItem].count * this.carts[indexItem].price;
   },
   cartDecrementItem: function (id) {
     const indexItem = this.carts.findIndex((itm) => itm.id === id);
@@ -42,5 +41,12 @@ export const state = proxy({
       this.carts.splice(indexItem, 1);
       this.foods[indexItemFoods].isSelected = false;
     }
+  },
+  cartTotal: function () {
+    let amountTotal = this.carts.reduce(function (prev, cur) {
+      return prev + cur.amount;
+    }, 0);
+
+    return amountTotal;
   },
 });
