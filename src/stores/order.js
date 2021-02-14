@@ -18,31 +18,33 @@ export const state = proxy({
     { id: 3, name: "Es Campur", price: 7500 },
   ],
   carts: [],
-  cartAddHandler: function (id) {
+  cartAddHandler(id) {
     const order = this.foods.find((food) => food.id === id);
     const indexItem = this.foods.findIndex((itm) => itm.id === id);
     this.carts.push({ ...order, count: 1, amount: order.price });
     this.foods[indexItem].isSelected = true;
   },
-  cartsLength: function () {
+  get cartsLength() {
     return this.carts.length;
   },
-  cartIncrementItem: function (id) {
+  cartIncrementItem(id) {
     const indexItem = this.carts.findIndex((itm) => itm.id === id);
     this.carts[indexItem].count += 1;
     this.carts[indexItem].amount =
       this.carts[indexItem].count * this.carts[indexItem].price;
   },
-  cartDecrementItem: function (id) {
+  cartDecrementItem(id) {
     const indexItem = this.carts.findIndex((itm) => itm.id === id);
     const indexItemFoods = this.foods.findIndex((itm) => itm.id === id);
     this.carts[indexItem].count -= 1;
+    this.carts[indexItem].amount =
+      this.carts[indexItem].count * this.carts[indexItem].price;
     if (this.carts[indexItem].count === 0) {
       this.carts.splice(indexItem, 1);
       this.foods[indexItemFoods].isSelected = false;
     }
   },
-  cartTotal: function () {
+  get cartTotal() {
     let amountTotal = this.carts.reduce(function (prev, cur) {
       return prev + cur.amount;
     }, 0);

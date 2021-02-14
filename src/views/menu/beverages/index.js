@@ -27,7 +27,7 @@ import { state } from "../../../stores/order";
 
 function Beverages() {
   const snapshot = useProxy(state);
-  console.table(snapshot.foods);
+  console.table(snapshot.carts);
 
   const Menu = ({ id, name, price, isSelected }) => (
     <CCol key={id} xs="12" sm="6" md="3">
@@ -55,12 +55,12 @@ function Beverages() {
     </CCol>
   );
 
-  const Ordered = ({ id, name, price, count }) => (
+  const Ordered = ({ id, name, count }) => (
     <CListGroupItem key={id} className="justify-content-between">
       {name}
       <span className="float-right">
         <BsDashSquareFill onClick={() => state.cartDecrementItem(id)} /> {count}{" "}
-        {price} <BsPlusSquareFill onClick={() => state.cartIncrementItem(id)} />
+        <BsPlusSquareFill onClick={() => state.cartIncrementItem(id)} />
       </span>
     </CListGroupItem>
   );
@@ -77,12 +77,7 @@ function Beverages() {
                   return cart.count <= 0 ? (
                     ""
                   ) : (
-                    <Ordered
-                      id={cart.id}
-                      name={cart.name}
-                      price={cart.price}
-                      count={cart.count}
-                    />
+                    <Ordered id={cart.id} name={cart.name} count={cart.count} />
                   );
                 })}
               </CListGroup>
@@ -107,7 +102,7 @@ function Beverages() {
               <CButton
                 block
                 color="primary"
-                onClick={() => console.log(snapshot.cartTotal())}
+                onClick={() => console.log(state.cartTotal)}
               >
                 Check out
               </CButton>
