@@ -34,9 +34,7 @@ function Beverages() {
       <CCard color="secondary">
         <CCardBody>
           <blockquote className="card-bodyquote">
-            <p>
-              {name} {id}
-            </p>
+            <p>{name}</p>
             <footer>{price}</footer>
           </blockquote>
         </CCardBody>
@@ -70,7 +68,9 @@ function Beverages() {
       <CRow>
         <CCol xs="12" sm="6" md="4">
           <CCard>
-            <CCardHeader>Order</CCardHeader>
+            <CCardHeader>
+              Balance {state.balance.amount - state.cartTotal}
+            </CCardHeader>
             <CCardBody>
               <CListGroup>
                 {snapshot.carts?.map((cart) => {

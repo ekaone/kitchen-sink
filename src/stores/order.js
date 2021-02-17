@@ -17,15 +17,17 @@ export const state = proxy({
     { id: 2, name: "Air Mineral", price: 2000 },
     { id: 3, name: "Es Campur", price: 7500 },
   ],
+  findIndexElement(elements, id) {
+    return elements.findIndex((element) => element.id === id);
+  },
   carts: [],
+  balance: { amount: 20000 },
   cartAddHandler(id) {
     const order = this.foods.find((food) => food.id === id);
-    const indexItem = this.foods.findIndex((itm) => itm.id === id);
+    // const indexItem = this.foods.findIndex((itm) => itm.id === id);
+    const indexItem = this.findIndexElement(this.foods, id);
     this.carts.push({ ...order, count: 1, amount: order.price });
     this.foods[indexItem].isSelected = true;
-  },
-  get cartsLength() {
-    return this.carts.length;
   },
   cartIncrementItem(id) {
     const indexItem = this.carts.findIndex((itm) => itm.id === id);
@@ -43,6 +45,9 @@ export const state = proxy({
       this.carts.splice(indexItem, 1);
       this.foods[indexItemFoods].isSelected = false;
     }
+  },
+  get cartsLength() {
+    return this.carts.length;
   },
   get cartTotal() {
     let amountTotal = this.carts.reduce(function (prev, cur) {
