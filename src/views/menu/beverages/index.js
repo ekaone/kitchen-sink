@@ -21,6 +21,7 @@ import {
   BsPlusSquareFill,
   BsDashSquareFill,
   BsFillTrashFill,
+  BsFillPlusCircleFill,
 } from "react-icons/bs";
 import { snapshot, useProxy } from "valtio";
 import { state } from "../../../stores/order";
@@ -29,21 +30,22 @@ function Beverages() {
   const snapshot = useProxy(state);
   console.table(snapshot.carts);
 
-  const Menu = ({ id, name, price, isSelected }) => (
-    <CCol key={id} xs="12" sm="6" md="3">
-      <CCard color="secondary">
+  const Menu = ({ id, name, price, isSelected, image }) => (
+    <CCol xs="12" sm="6" md="3">
+      <CCard>
+        <CCardHeader>{name}</CCardHeader>
         <CCardBody>
+          <img className="d-block w-100" src={image} />
           <blockquote className="card-bodyquote">
-            <p>{name}</p>
-            <footer>{price}</footer>
+            <footer>Rp. {price}</footer>
           </blockquote>
         </CCardBody>
         <CCardFooter>
           {!isSelected ? (
-            <BsFillArchiveFill
+            <BsFillPlusCircleFill
               onClick={() => state.cartAddHandler(id)}
               className="float-right"
-              style={{ color: "red", cursor: "pointer" }}
+              style={{ cursor: "pointer", fontSize: "20px" }}
             />
           ) : (
             ""
@@ -54,11 +56,19 @@ function Beverages() {
   );
 
   const Ordered = ({ id, name, count }) => (
-    <CListGroupItem key={id} className="justify-content-between">
+    <CListGroupItem className="justify-content-between">
       {name}
       <span className="float-right">
-        <BsDashSquareFill onClick={() => state.cartDecrementItem(id)} /> {count}{" "}
-        <BsPlusSquareFill onClick={() => state.cartIncrementItem(id)} />
+        <BsDashSquareFill
+          style={{ fontSize: "20px", cursor: "pointer" }}
+          onClick={() => state.cartDecrementItem(id)}
+        />
+        <span style={{ margin: "5px" }}> </span>
+        {count} <span style={{ margin: "5px" }}> </span>
+        <BsPlusSquareFill
+          style={{ fontSize: "20px", cursor: "pointer" }}
+          onClick={() => state.cartIncrementItem(id)}
+        />
       </span>
     </CListGroupItem>
   );
@@ -77,7 +87,12 @@ function Beverages() {
                   return cart.count <= 0 ? (
                     ""
                   ) : (
-                    <Ordered id={cart.id} name={cart.name} count={cart.count} />
+                    <Ordered
+                      key={cart.id}
+                      id={cart.id}
+                      name={cart.name}
+                      count={cart.count}
+                    />
                   );
                 })}
               </CListGroup>
@@ -90,10 +105,12 @@ function Beverages() {
               <CRow>
                 {snapshot.foods.map((food) => (
                   <Menu
+                    key={food.id}
                     id={food.id}
                     name={food.name}
                     price={food.price}
                     isSelected={food.isSelected}
+                    image={food.image}
                   />
                 ))}
               </CRow>

@@ -8,9 +8,30 @@ export const state = proxy({
     { id: 3, username: "user@mail.com", password: "123", isLoggedIn: false },
   ],
   foods: [
-    { id: 1, name: "Nasi Putih", price: 5000, isSelected: false },
-    { id: 2, name: "Tempe Goreng", price: 2000, isSelected: false },
-    { id: 3, name: "Sayur Terong", price: 3000, isSelected: false },
+    {
+      id: 1,
+      name: "Nasi Putih",
+      price: 5000,
+      image:
+        "https://res.cloudinary.com/dk0z4ums3/image/upload/v1536030557/attached_image/nutrisi-dan-kalori-nasi-putih-serta-fungsinya-bagi-tubuh.jpg",
+      isSelected: false,
+    },
+    {
+      id: 2,
+      name: "Tempe Goreng",
+      price: 2000,
+      image:
+        "https://selerasa.com/wp-content/uploads/2018/10/tempe-goreng-kencur-ebi.jpg",
+      isSelected: false,
+    },
+    {
+      id: 3,
+      name: "Sayur Terong",
+      price: 3000,
+      image:
+        "https://asset.kompas.com/crops/ef2SiI2aFfXu2haIX0mmfounoug=/3x0:700x465/750x500/data/photo/2020/09/08/5f579497a8108.jpg",
+      isSelected: false,
+    },
   ],
   beverages: [
     { id: 1, name: "Es Teh Manis", price: 2500 },
