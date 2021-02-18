@@ -32,6 +32,14 @@ export const state = proxy({
         "https://asset.kompas.com/crops/ef2SiI2aFfXu2haIX0mmfounoug=/3x0:700x465/750x500/data/photo/2020/09/08/5f579497a8108.jpg",
       isSelected: false,
     },
+    {
+      id: 4,
+      name: "Rendang",
+      price: 7500,
+      image:
+        "https://blog-static.mamikos.com/wp-content/uploads/2020/06/Rendang-Daging.jpg",
+      isSelected: false,
+    },
   ],
   beverages: [
     { id: 1, name: "Es Teh Manis", price: 2500 },
