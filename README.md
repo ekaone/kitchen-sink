@@ -1,1 +1,1 @@
-👩‍🍳🍴 Kitchen sink
+Kitchen sink
