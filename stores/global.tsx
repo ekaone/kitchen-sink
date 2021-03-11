@@ -1,4 +1,3 @@
-import { Interface } from "readline";
 import { proxy } from "valtio";
 
 interface User {
@@ -82,27 +81,27 @@ export const state = proxy<State>({
       isSelected: false,
     },
   ],
-  findIndexElement(elements, id) {
+  findIndexElement(elements: [], id: number) {
     return elements.findIndex((element) => element.id === id);
   },
   carts: [],
   balance: { amount: 20000 },
-  cartAddHandler(id) {
-    const order = this.foods.find((food) => food.id === id);
+  cartAddHandler(id: number) {
+    const order: number = this.foods.find((food) => food.id === id);
     // const indexItem = this.foods.findIndex((itm) => itm.id === id);
     const indexItem = this.findIndexElement(this.foods, id);
     this.carts.push({ ...order, count: 1, amount: order.price });
     this.foods[indexItem].isSelected = true;
   },
-  cartIncrementItem(id) {
-    const indexItem = this.carts.findIndex((itm) => itm.id === id);
+  cartIncrementItem(id: number) {
+    const indexItem: [] = this.carts.findIndex((itm) => itm.id === id);
     this.carts[indexItem].count += 1;
     this.carts[indexItem].amount =
       this.carts[indexItem].count * this.carts[indexItem].price;
   },
-  cartDecrementItem(id) {
-    const indexItem = this.carts.findIndex((itm) => itm.id === id);
-    const indexItemFoods = this.foods.findIndex((itm) => itm.id === id);
+  cartDecrementItem(id: number) {
+    const indexItem: [] = this.carts.findIndex((itm) => itm.id === id);
+    const indexItemFoods: [] = this.foods.findIndex((itm) => itm.id === id);
     this.carts[indexItem].count -= 1;
     this.carts[indexItem].amount =
       this.carts[indexItem].count * this.carts[indexItem].price;
