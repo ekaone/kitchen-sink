@@ -7,7 +7,6 @@ import {
   Button,
   Stack,
   Icon,
-  useColorModeValue,
   createIcon,
 } from "@chakra-ui/react";
 
@@ -32,21 +31,14 @@ export default function Hero() {
             fontWeight={600}
             fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
             lineHeight={"110%"}
-            color={"gray.200"}
+            color={"brandWhite.100"}
+            fontFamily={"Caveat"}
           >
-            Grow your business with
+            The variety
             <br />
-            <Text as={"span"} color={"green.400"}>
-              Loema Technology
-            </Text>
+            <Text as={"span"}>of taste on your plate</Text>
           </Heading>
-          <Text color={"gray.300"}>
-            Loema Technology is a system of interrelated computing devices,
-            mechanical and digital machines, objects, or people that are
-            provided with unique identifiers (UIDs) and the ability to transfer
-            data over a network without requiring human-to-human or
-            human-to-computer interactions.
-          </Text>
+
           <Stack
             direction={"column"}
             spacing={3}
@@ -54,43 +46,32 @@ export default function Hero() {
             alignSelf={"center"}
             position={"relative"}
           >
-            <Button
-              colorScheme={"green"}
-              bg={"green.400"}
-              rounded={"full"}
-              px={6}
-              _hover={{
-                bg: "green.500",
-              }}
+            <Text
+              color="brandOrange.100"
+              fontFamily={"Caveat"}
+              fontSize={{ base: "2xl", sm: "3xl", md: "5xl" }}
+              bgGradient="linear(to-l, #dfeb09, #FF0080)"
+              bgClip="text"
             >
-              Get Started
-            </Button>
-            <Button
-              variant={"outline"}
-              colorScheme={"blue"}
-              size={"sm"}
-              rounded={"full"}
-              px={6}
-            >
-              Learn more
-            </Button>
+              kitchen-sink corner
+            </Text>
             <Box>
               <Icon
                 as={Arrow}
-                color={useColorModeValue("gray.200", "gray.300")}
+                color="brandYellow.100"
                 w={71}
                 position={"absolute"}
                 right={-71}
-                top={"10px"}
+                top={"40px"}
               />
               <Text
-                fontSize={"lg"}
+                fontSize={"xl"}
                 fontFamily={"Caveat"}
                 position={"absolute"}
                 right={"-125px"}
-                top={"-15px"}
+                top={"8px"}
                 transform={"rotate(10deg)"}
-                color={"gray.200"}
+                color={"brandYellow.100"}
               >
                 Starting at $0/mo
               </Text>

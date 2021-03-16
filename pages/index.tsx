@@ -1,22 +1,21 @@
 import Head from "next/head";
 // components
-import { Layout } from "../components";
+import { Layout, Hero, Navbar } from "../components";
 
 export default function Home() {
   return (
     <div>
       <Head>
         <title>Kitchen sink</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
+      <Hero />
 
-      <Layout>
-        {Array(100)
-          .fill("")
-          .map((_, i) => (
-            <div>Main content</div>
-          ))}
-      </Layout>
+      {Array(100)
+        .fill("")
+        .map((_, i) => (
+          <div>Main content</div>
+        ))}
     </div>
   );
 }

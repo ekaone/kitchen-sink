@@ -14,6 +14,7 @@ function Layout({ children }: PropsType) {
         border="2px"
         borderColor={["red.200", "green.200", "blue.500"]}
         p="1.5"
+        marginTop="2.5rem"
       >
         <Box>{children}</Box>
       </Box>
