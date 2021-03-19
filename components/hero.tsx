@@ -9,18 +9,19 @@ import {
   Icon,
   createIcon,
 } from "@chakra-ui/react";
+import Wave from "./wave";
 
 export default function Hero() {
   return (
     <>
       <Head>
         <link
-          href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&display=swap"
           rel="stylesheet"
         />
       </Head>
 
-      <Container maxW={"3xl"}>
+      <Box width="full" bg="#febd2e" maxHeight="600px" borderRadius="20px">
         <Stack
           as={Box}
           textAlign={"center"}
@@ -29,10 +30,10 @@ export default function Hero() {
         >
           <Heading
             fontWeight={600}
-            fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
+            fontSize={{ base: "2xl", sm: "2xl", md: "4xl" }}
             lineHeight={"110%"}
-            color={"brandWhite.100"}
-            fontFamily={"Caveat"}
+            color={"brandHero.100"}
+            fontFamily="Syncopate"
           >
             The variety
             <br />
@@ -78,7 +79,8 @@ export default function Hero() {
             </Box>
           </Stack>
         </Stack>
-      </Container>
+      </Box>
+      {/* <Wave /> */}
     </>
   );
 }

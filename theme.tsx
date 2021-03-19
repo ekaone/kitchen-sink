@@ -1,6 +1,9 @@
 import { extendTheme } from "@chakra-ui/react";
 
 const colors = {
+  brandHero: {
+    100: "#242424",
+  },
   brandOrange: {
     100: "#fe8c00",
   },
@@ -19,9 +22,7 @@ const styles = {
       scrollBehavior: "smooth",
     },
     "html, body": {
-      bgGradient: "linear(140deg, #020024 0%, #090979 35%, #00d4ff 100%)",
-      backgroundAttachment: "fixed",
-      color: "#fe8c00",
+      bg: "#e6dbcc",
     },
   }),
 };

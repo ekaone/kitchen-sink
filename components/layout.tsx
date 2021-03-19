@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import { Box } from "@chakra-ui/react";
+import Container from "./container";
 
 type PropsType = {
   children: ReactNode;
@@ -7,18 +8,17 @@ type PropsType = {
 
 function Layout({ children }: PropsType) {
   return (
-    <div>
+    <Container>
       <Box
         width="100%"
         height="100%"
-        border="2px"
-        borderColor={["red.200", "green.200", "blue.500"]}
-        p="1.5"
-        marginTop="2.5rem"
+        borderWidth="5px"
+        borderRadius="3xl"
+        borderColor="#ffffff"
       >
         <Box>{children}</Box>
       </Box>
-    </div>
+    </Container>
   );
 }
 
