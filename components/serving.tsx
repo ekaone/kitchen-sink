@@ -20,7 +20,7 @@ const Avocado: React.FC = () => (
 
 function Serving({ dark, title }: ServingProps) {
   return (
-    <Flex padding="10">
+    <Flex>
       <Avocado />
       <Box
         bg={dark ? "brandHero.100" : "whiteAlpha.600"}
@@ -29,17 +29,14 @@ function Serving({ dark, title }: ServingProps) {
         padding="2"
         paddingX="12"
         width="18rem"
+        boxShadow="lg"
         zIndex="1"
       >
         <Stack direction="column">
-          <Text
-            textAlign="center"
-            color={dark ? "#f7f5f5" : "brandHero.100"}
-            fontWeight="bold"
-          >
+          <Text color={dark ? "#f7f5f5" : "brandHero.100"} fontWeight="bold">
             Avocado Salad
           </Text>
-          <Stack direction="row" justifyContent="center">
+          <Stack direction="row">
             <Box>
               <Text color={dark ? "#ebe1e1" : "brandHero.100"} fontSize="sm">
                 Serving

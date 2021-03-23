@@ -1,19 +1,21 @@
 import Head from "next/head";
+import { Box } from "@chakra-ui/react";
+
 // components
-import { Layout, Hero, Serving } from "../components";
+import { Layout, Hero, Serving, Menus } from "../components";
 
 export default function Home() {
   return (
-    <div>
+    <Box>
       {/* <Layout> */}
-      <Serving dark />
-      <Serving />
+      {/* <ServingMain /> */}
+      <Menus />
       {/* {Array(100)
           .fill("")
           .map((_, i) => (
             <div key={i}>Main content</div>
           ))} */}
       {/* </Layout> */}
-    </div>
+    </Box>
   );
 }
