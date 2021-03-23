@@ -4,4 +4,5 @@ export { default as Hero } from "./hero/index";
 export { default as Navbar } from "./nav-bar";
 export { default as Serving } from "./serving";
 export { default as ServingMain } from "./serving-main";
-export { default as Menus } from "./menus";
+export { default as MenuNavigation } from "./menu-navigation";
+export { default as SectionMenu } from "./section-menu";

@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { Box, SimpleGrid, Flex, Spacer, Text, Stack } from "@chakra-ui/react";
+import { Box, SimpleGrid, Flex, Text, Stack } from "@chakra-ui/react";
 
 function ServingMain() {
   return (
@@ -9,8 +9,11 @@ function ServingMain() {
       fontSize="medium"
       borderRadius="xl"
       padding="2"
-      width="25rem"
+      height="12rem"
       boxShadow="lg"
+      as={Flex}
+      justifyContent="center"
+      alignItems="center"
     >
       <SimpleGrid columns={2} spacing={2}>
         <Box as={Flex} justifyContent="center" alignItems="center">
@@ -21,7 +24,12 @@ function ServingMain() {
             height={150}
           />
         </Box>
-        <Box height="10rem">
+        <Box
+          height="10rem"
+          as={Flex}
+          justifyContent="center"
+          alignItems="center"
+        >
           <Stack direction="column">
             <Text color="brandHero.100" fontWeight="bold">
               Avocado Salad
@@ -29,7 +37,7 @@ function ServingMain() {
             <Text color="brandHero.100" fontSize="sm">
               Avocado Salad is the best dessert, buy one get two
             </Text>
-            <Stack direction="row" position="absolute" bottom="3">
+            <Stack direction="row" paddingTop="1.5">
               <Box>
                 <Text color="brandHero.100" fontSize="sm">
                   Serving
@@ -38,8 +46,7 @@ function ServingMain() {
                   2 persons
                 </Text>
               </Box>
-              <Spacer />
-              <Box>
+              <Box paddingLeft="5">
                 <Text color="brandHero.100" fontSize="sm">
                   Cook Time
                 </Text>

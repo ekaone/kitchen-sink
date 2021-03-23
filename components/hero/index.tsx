@@ -9,7 +9,9 @@ function Hero() {
   return (
     <Box
       width="full"
-      bg="#febd2e"
+      // bg="#febd2e"
+      backgroundImage="url('/assets/blob-scatter-haikei.svg')"
+      backgroundPosition="center"
       maxHeight="600px"
       borderRadius="20px"
       padding="1rem"
