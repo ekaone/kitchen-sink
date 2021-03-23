@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import Head from "next/head";
 import {
   Box,
   Flex,
@@ -15,8 +16,11 @@ import {
   useDisclosure,
   useColorModeValue,
   Stack,
+  Text,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+//components
+import Logo from "./logo";
 
 const Links = ["Dashboard", "Projects", "Team"];
 
@@ -40,15 +44,14 @@ export default function Navbar() {
 
   return (
     <>
-      <Box
-        bg={useColorModeValue("gray.100", "gray.900")}
-        px={4}
-        position="fixed"
-        width="100%"
-        overflow="hidden"
-        opacity="0.7"
-      >
-        <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
+      <Head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Courgette&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+      <Box width="100%">
+        <Flex h={12} alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
             size={"md"}
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -57,7 +60,11 @@ export default function Navbar() {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={"center"}>
-            <Box>Logo</Box>
+            <Logo>
+              <Text fontFamily="Courgette" fontSize="xx-large" color="#0073ee">
+                kicennn
+              </Text>
+            </Logo>
             <HStack
               as={"nav"}
               spacing={4}

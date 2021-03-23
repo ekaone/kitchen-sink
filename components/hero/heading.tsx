@@ -1,7 +1,13 @@
 import Head from "next/head";
-import { Box, Heading, Text, Stack, createIcon } from "@chakra-ui/react";
+import { Box, Button, Text, Stack, createIcon } from "@chakra-ui/react";
 
-export default function Hero() {
+const IconFood = () => (
+  <span role="img" className="link" aria-label="Food">
+    🥗
+  </span>
+);
+
+export default function HeadingText() {
   return (
     <>
       <Head>
@@ -11,24 +17,58 @@ export default function Hero() {
         />
       </Head>
 
-      <Box width="full" bg="#febd2e" maxHeight="600px" borderRadius="20px">
+      <Box>
         <Stack
           as={Box}
-          textAlign={"center"}
-          spacing={{ base: 8, md: 14 }}
-          py={{ base: 20, md: 26 }}
+          spacing={{ base: 0.5, md: 1 }}
+          paddingY={{ base: 0.5, md: 2 }}
         >
-          <Heading
+          <Text
             fontWeight={600}
-            fontSize={{ base: "2xl", sm: "2xl", md: "4xl" }}
-            lineHeight={"110%"}
+            fontSize={{ base: "2xl", sm: "2xl", md: "5xl" }}
             color={"brandHero.100"}
             fontFamily="Syncopate"
           >
             The variety
-            <br />
-            <Text as={"span"}>of taste on your plate</Text>
-          </Heading>
+          </Text>
+          <Text
+            fontWeight={600}
+            fontSize={{ base: "2xl", sm: "2xl", md: "4xl" }}
+            color={"brandHero.100"}
+            fontFamily="Syncopate"
+            paddingLeft="5foorem"
+          >
+            <IconFood /> of taste
+          </Text>
+          <Text
+            fontWeight={600}
+            fontSize={{ base: "2xl", sm: "2xl", md: "4xl" }}
+            color={"brandHero.100"}
+            fontFamily="Syncopate"
+          >
+            on your{" "}
+            <Box
+              as="span"
+              backgroundImage="linear-gradient(120deg, #21c234 0%, #8fd3f4 100%)"
+              backgroundRepeat="no-repeat"
+              backgroundSize="100% 0.25em"
+              backgroundPosition="0 88%"
+            >
+              plate
+            </Box>
+          </Text>
+          <Stack direction="row" spacing={4} paddingTop="3rem">
+            <Button textTransform="uppercase" colorScheme="red" variant="solid">
+              Learn More
+            </Button>
+            <Button
+              textTransform="uppercase"
+              colorScheme="red"
+              variant="outline"
+            >
+              Get Started
+            </Button>
+          </Stack>
         </Stack>
       </Box>
     </>

@@ -7,6 +7,25 @@
     "build": "next build",
     "start": "next start"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ekaone/kitchen-sink.git"
+  },
+  "keywords": [
+    "kitchen",
+    "sink",
+    "eka",
+    "prasetia",
+    "dannyeka",
+    "food",
+    "beverage"
+  ],
+  "author": "Eka Prasetia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ekaone/kitchen-sink/issues"
+  },
+  "homepage": "https://kitchen-sink-eka.vercel.app/",
   "dependencies": {
     "@chakra-ui/icons": "^1.0.6",
     "@chakra-ui/react": "^1.3.4",
@@ -15,8 +34,10 @@
     "@supabase/supabase-js": "^1.4.2",
     "framer-motion": "^3.10.0",
     "next": "10.0.8",
+    "next-seo": "^4.22.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-ztext": "^1.0.3",
     "valtio": "^0.7.1"
   },
   "devDependencies": {
